@@ -220,7 +220,7 @@
     </div>
     <nav>
       <a href="index.php" class="active">Laporan Saya</a>
-      <a href="login-masyarakat.php" class="logout-btn">Logout</a>
+      <a href="../login-masyarakat.php" class="logout-btn">Logout</a>
     </nav>
   </header>
 
