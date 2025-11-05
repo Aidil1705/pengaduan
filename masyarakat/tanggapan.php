@@ -203,7 +203,7 @@
   <!-- Header -->
   <header>
     <div class="brand">
-      <img src="img/logo-bandarlampung.png" alt="Logo Kota Bandar Lampung">
+      <img src="../img/logo-bandarlampung.png" alt="Logo Kota Bandar Lampung">
       <div class="judul-website">
         Sistem Pengaduan Masyarakat<br>
         Kota Bandar Lampung
