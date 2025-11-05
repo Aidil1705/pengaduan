@@ -1,127 +1,157 @@
-<?php
-    session_start();
-    include "koneksi.php";
-
-    if(isset($_POST['masuk'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $qry = mysqli_query($conn, "SELECT * FROM masyarakat WHERE username = '$username' AND password = '$password'");
-    if(mysqli_num_rows($qry) > 0){
-        
-
-        $data = mysqli_fetch_assoc($qry);
-        if($data['username']=="$username"){
-            $_SESSION['username'] = $username;
-            $_SESSION['nik'] = $data['nik'];
-            header("location:masyarakat/index.php");
-        }
-        }else{
-            echo"<script>alert('Maaf Login Gagal, Silahkan ulangi Lagi'); window.location.assign('login-masyarakat.php');
-            </script>";
-        }
-    
-}
-?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body{
-            background-color:#FF0000;
-        }
-        .box{
-            width : 350px;
-            height : 500px;
-            box-shadow : 1px 1px 1px 1px;
-            border-radius : 20px;
-            background-color : white;
-            margin-top : 25px;
-        }
-        .box img{
-            padding-bottom : 50px;
-        }
-        .box input{
-            border-radius : 5px;
-        }
-        .box p{
-            margin-top:75px;
-        }
-        .box tr{
-            padding-top:20px;
-        }
-        .tombol {
-            background-color: #ffffff;
-            color: black;
-            border: 2px solid #FF0000;
-            padding-left: 15px;
-            padding-right: 15px;
-            right: 0;
-            margin-left : -175px;
-            margin-top:25px;
-            height: 30px;
-        }
-        .tombol:hover{
-            background-color: #FF0000 ;
-            color: white;
-            transition : 0.4s;
-        }
-        h1{
-            position:relative;
-            margin-top:75px;
-            color:white;
-            font-family: Arial; 
-            
-        }
-        .btn2{
-            background-color: #ffffff;
-            color: black;
-            border: 2px solid #FF0000;
-            padding-left: 15px;
-            padding-right: 15px;
-            height: 50px;
-        }
-        .btn2:hover{
-            background-color: #FF0000 ;
-            color: white;
-            transition : 0.4s;
-            border:2px solid white;
-        }
-        input{
-            height: 25px;
-            width:250px;
-            border:2px solid red;
-        }
-    </style>
-    <title>Log In</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Masyarakat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff1a1a, #990000);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* pattern kotak */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(135deg, rgba(255,255,255,0.08) 25%, transparent 25%),
+        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.1) 75%),
+        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.08) 75%);
+      background-size: 100px 100px;
+      mix-blend-mode: overlay;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      z-index: 2;
+    }
+
+    header img {
+      width: 60px;
+      height: auto;
+    }
+
+    .judul-website {
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.3;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+
+    .login-container {
+      background: rgba(255,255,255,0.15);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
+      width: 320px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      margin: 8px 0;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .btn {
+      background: white;
+      color: #e60000;
+      border: none;
+      padding: 10px 0;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #cc0000;
+      color: #fff;
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    p a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid white;
+      padding-bottom: 2px;
+      transition: 0.3s;
+    }
+
+    p a:hover {
+      color: #ffd6d6;
+      border-color: #ffd6d6;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.85rem;
+      z-index: 2;
+    }
+  </style>
 </head>
 <body>
-    
-
-    <center>
-        <h1>Silahkan Login</h1>
-    <div class="box">
-
-        <br>
-        <img src="img/profil.jpg" alt="" width="125px" height="125px" >
-        
-    <table>
-    <form action="" method="POST">
-        <tr>
-            <td><input type="text" name="username" placeholder="Masukkan Nama"></td>
-        </tr>
-        <tr><td><input type="password" name="password" placeholder="Masukkan Password"></td></tr>
-    </table>
-    <br>
-        <button class="tombol" name="masuk">Log In</button>
-    
-    </form>
-    <p>Belum punya akun? <br><a href="register-masyarakat.php">Daftar Disini</a></p>
+  <header>
+    <img src="logo-bandarlampung.png" alt="Logo Kota Bandar Lampung">
+    <div class="judul-website">
+      Sistem Pengaduan Masyarakat<br>
+      Kota Bandar Lampung
     </div>
-    <br>
-    <a href="index.php"><button class="btn2">Kembali Ke Halaman Depan</button></a>
-    </center>
+  </header>
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <form action="proses_login_masyarakat.php" method="POST">
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button class="btn" type="submit">Masuk</button>
+    </form>
+    <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+  </div>
+
+  <footer>© 2025 Pemerintah Kota Bandar Lampung</footer>
 </body>
 </html>
