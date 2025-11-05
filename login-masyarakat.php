@@ -149,7 +149,7 @@
       <input type="password" name="password" placeholder="Password" required>
       <button class="btn" type="submit">Masuk</button>
     </form>
-    <p>Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+    <p>Belum punya akun? <a href="register-masyarakat.php">Daftar di sini</a></p>
   </div>
 
   <footer>© 2025 Pemerintah Kota Bandar Lampung</footer>
