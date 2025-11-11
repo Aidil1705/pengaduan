@@ -119,7 +119,7 @@
   <div class="content">
     <h1>Selamat Datang di Website Pengaduan Masyarakat<br>Kota Bandar Lampung</h1>
     <p>Layanan Aspirasi dan Pengaduan Online Rakyat</p>
-    <button class="login-btn" onclick="location.href='login_masyarakat.html'">Login</button>
+    <button class="login-btn" onclick="location.href='login-masyarakat.php'">Login</button>
   </div>
 
   <footer>© 2025 Pemerintah Kota Bandar Lampung</footer>
