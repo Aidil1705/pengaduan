@@ -327,68 +327,90 @@
     </table>
   </div>
 
-  <script>
+    <script>
     function filterTanggal() {
-      const tglAwal = document.getElementById("tanggal-awal").value;
-      const tglAkhir = document.getElementById("tanggal-akhir").value;
-      const rows = document.querySelectorAll("#tabel-laporan tbody tr");
+        const tglAwal = document.getElementById("tanggal-awal").value;
+        const tglAkhir = document.getElementById("tanggal-akhir").value;
+        const rows = document.querySelectorAll("#tabel-laporan tbody tr");
 
-      if (!tglAwal || !tglAkhir) {
+        if (!tglAwal || !tglAkhir) {
         alert("Pilih kedua tanggal terlebih dahulu!");
         return;
-      }
+        }
 
-      const start = new Date(tglAwal + "T00:00:00");
-      const end = new Date(tglAkhir + "T23:59:59");
+        const start = new Date(tglAwal + "T00:00:00");
+        const end = new Date(tglAkhir + "T23:59:59");
 
-      rows.forEach((row) => {
+        rows.forEach((row) => {
         const tanggalText = row.children[1].textContent.trim();
         const [day, month, year] = tanggalText.split("-");
         const tanggal = new Date(`${year}-${month}-${day}T12:00:00`);
 
         row.style.display = tanggal >= start && tanggal <= end ? "" : "none";
-      });
+        });
     }
 
+    // Cetak rentang tanggal
     function cetakRentang() {
-      const tglAwal = document.getElementById("tanggal-awal").value;
-      const tglAkhir = document.getElementById("tanggal-akhir").value;
+        const tglAwal = document.getElementById("tanggal-awal").value;
+        const tglAkhir = document.getElementById("tanggal-akhir").value;
 
-      if (!tglAwal || !tglAkhir) {
+        if (!tglAwal || !tglAkhir) {
         alert("Pilih kedua tanggal terlebih dahulu!");
         return;
-      }
+        }
 
-      const start = new Date(tglAwal + "T00:00:00");
-      const end = new Date(tglAkhir + "T23:59:59");
-      const rows = document.querySelectorAll("tbody tr");
-      const filteredData = [];
+        const start = new Date(tglAwal + "T00:00:00");
+        const end = new Date(tglAkhir + "T23:59:59");
+        const rows = document.querySelectorAll("tbody tr");
+        const filteredData = [];
 
-      rows.forEach((row) => {
+        rows.forEach((row) => {
         const tanggalText = row.children[1].textContent.trim();
         const [day, month, year] = tanggalText.split("-");
         const tanggal = new Date(`${year}-${month}-${day}T12:00:00`);
 
         if (tanggal >= start && tanggal <= end) {
-          filteredData.push({
+            filteredData.push({
             tanggal: tanggalText,
             nik: row.children[2].textContent,
             isi: row.children[3].textContent,
-          });
+            status: row.children[4].textContent
+            });
         }
-      });
+        });
 
-      if (filteredData.length === 0) {
+        if (filteredData.length === 0) {
         alert("Tidak ada data dalam rentang tanggal tersebut.");
         return;
-      }
+        }
 
-      localStorage.setItem("dataCetak", JSON.stringify(filteredData));
-      localStorage.setItem("tglAwal", tglAwal);
-      localStorage.setItem("tglAkhir", tglAkhir);
-      window.open("cetak_pengaduan.php", "_blank");
+        localStorage.setItem("dataCetak", JSON.stringify(filteredData));
+        localStorage.setItem("tglAwal", tglAwal);
+        localStorage.setItem("tglAkhir", tglAkhir);
+        window.open("cetak_detail.php?mode=rentang", "_blank");
     }
-  </script>
+
+    // Cetak satu laporan berdasarkan ID
+    function cetakSatu(id) {
+        const row = document.querySelector(`#tabel-laporan tbody tr:nth-child(${id})`);
+        if (!row) {
+        alert("Data tidak ditemukan!");
+        return;
+        }
+
+        const data = {
+        tanggal: row.children[1].textContent,
+        nik: row.children[2].textContent,
+        isi: row.children[3].textContent,
+        status: row.children[4].textContent
+        };
+
+        localStorage.setItem("dataCetak", JSON.stringify([data]));
+        localStorage.setItem("modeCetak", "satu");
+        window.open("cetak_detail.php?id=" + id, "_blank");
+    }
+    </script>
 
 </body>
 </html>
