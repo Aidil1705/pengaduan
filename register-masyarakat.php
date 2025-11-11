@@ -18,25 +18,23 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #ff1a1a, #990000);
-      color: white;
+      background: linear-gradient(135deg, #EEEEEE, #EAD196);
+      color: #333;
       position: relative;
       overflow: hidden;
     }
 
-    /* Pattern kotak */
+    /* Pola lembut di background */
     body::before {
       content: "";
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(135deg, rgba(255,255,255,0.08) 25%, transparent 25%),
-        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.1) 75%),
-        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.08) 75%);
-      background-size: 100px 100px;
+        linear-gradient(135deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.05) 75%);
+      background-size: 120px 120px;
+      opacity: 0.6;
       mix-blend-mode: overlay;
-      opacity: 0.8;
       z-index: 0;
     }
 
@@ -59,14 +57,15 @@
       font-weight: 600;
       font-size: 1.1rem;
       line-height: 1.3;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      color: #7D0A0A;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
     .register-container {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.95);
       padding: 35px;
       border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 25px rgba(0,0,0,0.35);
       backdrop-filter: blur(10px);
       width: 350px;
       text-align: center;
@@ -76,17 +75,21 @@
     h2 {
       margin-bottom: 25px;
       font-size: 1.6rem;
+      color: #7D0A0A;
       letter-spacing: 1px;
     }
 
     input, textarea {
       width: 100%;
       padding: 10px;
-      border: none;
+      border: 1px solid rgba(0,0,0,0.2);
       margin: 8px 0;
       border-radius: 8px;
+      background: rgba(255,255,255,0.8);
+      color: #333;
       outline: none;
       font-size: 0.95rem;
+      transition: 0.3s;
     }
 
     textarea {
@@ -94,9 +97,14 @@
       height: 60px;
     }
 
+    input:focus, textarea:focus {
+      border-color: #BF3131;
+      background: rgba(255,255,255,1);
+    }
+
     .btn {
-      background: white;
-      color: #e60000;
+      background: #BF3131;
+      color: #fff;
       border: none;
       padding: 10px 0;
       width: 100%;
@@ -105,33 +113,38 @@
       margin-top: 10px;
       cursor: pointer;
       transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .btn:hover {
-      background: #cc0000;
-      color: #fff;
+      background: #7D0A0A;
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
 
     p {
       margin-top: 15px;
       font-size: 0.9rem;
+      color: #444;
     }
 
     a {
-      color: white;
+      color: #BF3131;
       text-decoration: none;
-      border-bottom: 1px solid transparent;
+      border-bottom: 1px solid #BF3131;
+      padding-bottom: 2px;
       transition: 0.3s;
     }
 
     a:hover {
-      border-bottom: 1px solid white;
+      color: #7D0A0A;
+      border-color: #7D0A0A;
     }
 
     footer {
       position: absolute;
       bottom: 20px;
-      color: rgba(255,255,255,0.85);
+      color: #555;
       font-size: 0.85rem;
       z-index: 2;
     }
