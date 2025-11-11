@@ -14,8 +14,8 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #ff1a1a, #990000);
-      color: white;
+      background: linear-gradient(135deg, #EEEEEE, #EAD196);
+      color: #333;
       position: relative;
       overflow-x: hidden;
       display: flex;
@@ -23,18 +23,17 @@
       align-items: center;
     }
 
+    /* Pola lembut di background */
     body::before {
       content: "";
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(135deg, rgba(255,255,255,0.08) 25%, transparent 25%),
-        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.1) 75%),
-        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.08) 75%);
-      background-size: 100px 100px;
+        linear-gradient(135deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.05) 75%);
+      background-size: 120px 120px;
+      opacity: 0.6;
       mix-blend-mode: overlay;
-      opacity: 0.8;
       z-index: 0;
     }
 
@@ -63,7 +62,8 @@
       font-weight: 600;
       font-size: 1.1rem;
       line-height: 1.3;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      color: #7D0A0A;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
     nav {
@@ -73,7 +73,7 @@
     }
 
     nav a {
-      color: white;
+      color: #7D0A0A;
       text-decoration: none;
       font-weight: 500;
       font-size: 1rem;
@@ -83,8 +83,8 @@
     }
 
     nav a:hover {
-      border-bottom: 1px solid white;
-      color: #ffcccc;
+      border-bottom: 1px solid #BF3131;
+      color: #BF3131;
     }
 
     nav a.active {
@@ -93,18 +93,22 @@
 
     .logout-btn {
       padding: 8px 24px;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      border: 2px solid white;
+      background: #BF3131;
+      color: #fff;
+      border: 2px solid #BF3131;
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .logout-btn:hover {
-      background: white;
-      color: #990000;
+      background: #7D0A0A;
+      border-color: #7D0A0A;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
 
     .page-title {
@@ -112,7 +116,8 @@
       margin: 40px 0 20px 0;
       font-size: 2rem;
       font-weight: 600;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      color: #7D0A0A;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
       z-index: 2;
       position: relative;
     }
@@ -120,12 +125,12 @@
     .form-container {
       width: 90%;
       max-width: 800px;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-radius: 12px;
       padding: 30px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      color: white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      color: #333;
       z-index: 2;
       position: relative;
       margin-bottom: 40px;
@@ -145,9 +150,17 @@
       width: 100%;
       padding: 10px;
       border-radius: 8px;
-      border: none;
+      border: 1px solid rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.8);
+      color: #333;
       outline: none;
       font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    textarea:focus, input[type="text"]:focus {
+      border-color: #BF3131;
+      background: rgba(255,255,255,1);
     }
 
     textarea {
@@ -161,8 +174,8 @@
 
     .btn {
       display: inline-block;
-      background: white;
-      color: #990000;
+      background: #BF3131;
+      color: #fff;
       border: none;
       border-radius: 8px;
       padding: 12px 30px;
@@ -170,13 +183,14 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       margin-top: 20px;
     }
 
     .btn:hover {
-      background-color: #cc0000;
-      color: white;
+      background: #7D0A0A;
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
 
     @media (max-width: 768px) {
