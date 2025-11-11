@@ -14,8 +14,8 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #ff1a1a, #990000);
-      color: white;
+      background: linear-gradient(135deg, #EEEEEE, #EAD196);
+      color: #333;
       position: relative;
       overflow-x: hidden;
       display: flex;
@@ -23,26 +23,22 @@
       align-items: center;
     }
 
-    /* Pola latar belakang */
+    /* Pola lembut */
     body::before {
       content: "";
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(135deg, rgba(255,255,255,0.08) 25%, transparent 25%),
-        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.1) 75%),
-        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.08) 75%);
-      background-size: 100px 100px;
+        linear-gradient(135deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.05) 75%);
+      background-size: 120px 120px;
+      opacity: 0.6;
       mix-blend-mode: overlay;
-      opacity: 0.8;
       z-index: 0;
     }
 
-    /* Header dan Navbar */
     header {
       width: 100%;
-      position: relative;
       padding: 20px 40px;
       display: flex;
       align-items: center;
@@ -65,7 +61,7 @@
       font-weight: 600;
       font-size: 1.1rem;
       line-height: 1.3;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      color: #7D0A0A;
     }
 
     nav {
@@ -75,7 +71,7 @@
     }
 
     nav a {
-      color: white;
+      color: #7D0A0A;
       text-decoration: none;
       font-weight: 500;
       font-size: 1rem;
@@ -85,8 +81,8 @@
     }
 
     nav a:hover {
-      color: white;
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid #BF3131;
+      color: #BF3131;
     }
 
     nav a.active {
@@ -95,112 +91,137 @@
 
     .logout-btn {
       padding: 8px 24px;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      border: 2px solid white;
+      background: #BF3131;
+      color: #fff;
+      border: 2px solid #BF3131;
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .logout-btn:hover {
-      background: white;
-      color: #990000;
+      background: #7D0A0A;
+      border-color: #7D0A0A;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
 
-    /* Judul Halaman */
     .page-title {
       text-align: center;
-      margin: 40px 0 20px 0;
+      margin: 40px 0 20px;
       font-size: 2rem;
       font-weight: 600;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      color: #7D0A0A;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
       z-index: 2;
-      position: relative;
     }
 
-    /* Tabel */
-    table {
+    /* Kotak tanggapan */
+    .response-container {
       width: 90%;
-      max-width: 900px;
-      border-collapse: collapse;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      margin-bottom: 40px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      color: #333;
       z-index: 2;
-      position: relative;
+      margin-bottom: 40px;
     }
 
-    th, td {
-      padding: 14px 15px;
-      text-align: center;
-      color: white;
+    .response-header {
+      border-bottom: 2px solid #BF3131;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
 
-    th {
-      background-color: rgba(0,0,0,0.3);
-      color: #ffcccc;
-      text-transform: uppercase;
+    .response-header h3 {
+      color: #7D0A0A;
+      font-size: 1.4rem;
+      margin-bottom: 5px;
     }
 
-    tr:nth-child(even) {
-      background-color: rgba(255,255,255,0.05);
+    .response-header p {
+      font-size: 0.95rem;
+      color: #555;
     }
 
-    /* Tombol */
+    .response-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 15px;
+      column-gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .response-details p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .response-details strong {
+      color: #7D0A0A;
+    }
+
+    .response-body {
+      background: rgba(255, 240, 240, 0.6);
+      border-left: 4px solid #BF3131;
+      padding: 15px 20px;
+      border-radius: 8px;
+      line-height: 1.7;
+      color: #333;
+    }
+
     .btn {
       display: inline-block;
+      background: #BF3131;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
       padding: 12px 30px;
       font-size: 16px;
       font-weight: 600;
-      color: #990000;
-      background-color: white;
-      border: none;
-      border-radius: 8px;
       cursor: pointer;
-      text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      text-decoration: none;
       position: relative;
-      margin-bottom: 50px;
+      overflow: hidden;
     }
 
+    /* Efek hover */
     .btn:hover {
-      background-color: #cc0000;
-      color: white;
+      background: #7D0A0A;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
     }
+
+    /* Efek klik (animasi tekan) */
+    .btn:active {
+      transform: translateY(0) scale(0.97);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
+      .response-details {
+        grid-template-columns: 1fr;
       }
-
-      nav {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      table {
-        font-size: 0.9rem;
-      }
-
       .page-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+      }
+      .response-container {
+        padding: 20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <div class="brand">
       <img src="../img/logo-bandarlampung.png" alt="Logo Kota Bandar Lampung">
@@ -215,37 +236,74 @@
     </nav>
   </header>
 
-  <!-- Judul Halaman -->
   <div class="page-title">Tanggapan Petugas</div>
 
-  <!-- Tabel Tanggapan -->
-  <table>
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>Tanggal Tanggapan</th>
-        <th>Isi Tanggapan</th>
-        <th>Petugas</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>05-11-2025</td>
-        <td>Terima kasih atas laporannya. Tim kami sudah mengunjungi lokasi dan sedang melakukan perbaikan jalan.</td>
-        <td>Andi Pratama</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>06-11-2025</td>
-        <td>Pekerjaan sudah selesai dilakukan. Jalan kini dapat dilalui dengan aman.</td>
-        <td>Siti Rahma</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="response-container" id="responseContainer">
+    <div class="response-header">
+      <h3>Laporan Pengaduan</h3>
+      <p>ID Laporan: #1</p>
+    </div>
 
-  <!-- Tombol kembali -->
+    <div class="response-details">
+      <p><strong>Laporan:</strong> Jalan di Kelurahan Sukarame rusak parah dan sulit dilalui kendaraan roda dua.</p>
+      <p><strong>Status:</strong> Selesai</p>
+      <p><strong>Tanggal Tanggapan:</strong> 06-11-2025</p>
+      <p><strong>Petugas:</strong> Siti Rahma</p>
+    </div>
+
+    <div class="response-body">
+      <strong>Isi Tanggapan:</strong><br>
+      Pekerjaan sudah selesai dilakukan. Jalan kini dapat dilalui dengan aman dan nyaman oleh warga sekitar.
+    </div>
+  </div>
+
   <a href="index.php" class="btn">Kembali ke Dashboard</a>
+
+  <script>
+    // Contoh data tanggapan (bisa diganti dengan database)
+    const params = new URLSearchParams(window.location.search);
+    const laporanId = params.get("id"); 
+
+    const tanggapanData = {
+      1: {
+        laporan: "Jalan di Kelurahan Sukarame rusak parah dan sulit dilalui kendaraan roda dua.",
+        status: "Selesai",
+        tanggal: "06-11-2025",
+        isi: "Pekerjaan sudah selesai dilakukan. Jalan kini dapat dilalui dengan aman dan nyaman oleh warga sekitar.",
+        petugas: "Siti Rahma"
+      },
+      2: {
+        laporan: "Lampu penerangan jalan di Gang Mawar mati total sejak minggu lalu.",
+        status: "Proses",
+        tanggal: "08-11-2025",
+        isi: "Petugas sedang melakukan pengecekan dan penggantian lampu.",
+        petugas: "Andi Pratama"
+      }
+    };
+
+    const container = document.getElementById("responseContainer");
+    if (laporanId && tanggapanData[laporanId]) {
+      const data = tanggapanData[laporanId];
+      container.innerHTML = `
+        <div class="response-header">
+          <h3>Laporan Pengaduan</h3>
+          <p>ID Laporan: #${laporanId}</p>
+        </div>
+
+        <div class="response-details">
+          <p><strong>Laporan:</strong> ${data.laporan}</p>
+          <p><strong>Status:</strong> ${data.status}</p>
+          <p><strong>Tanggal Tanggapan:</strong> ${data.tanggal}</p>
+          <p><strong>Petugas:</strong> ${data.petugas}</p>
+        </div>
+
+        <div class="response-body">
+          <strong>Isi Tanggapan:</strong><br>
+          ${data.isi}
+        </div>
+      `;
+    }
+  </script>
 
 </body>
 </html>
