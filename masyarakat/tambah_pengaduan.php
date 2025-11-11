@@ -14,29 +14,31 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #ff1a1a, #990000);
-      color: white;
+      background: linear-gradient(135deg, #EEEEEE, #EAD196);
+      color: #333;
       position: relative;
       overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Pola kotak */
+    /* Pola lembut */
     body::before {
       content: "";
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(135deg, rgba(255,255,255,0.08) 25%, transparent 25%),
-        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.1) 75%),
-        linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.08) 75%);
-      background-size: 100px 100px;
+        linear-gradient(135deg, rgba(255,255,255,0.05) 25%, transparent 25%),
+        linear-gradient(135deg, transparent 75%, rgba(0,0,0,0.05) 75%);
+      background-size: 120px 120px;
+      opacity: 0.6;
       mix-blend-mode: overlay;
-      opacity: 0.8;
       z-index: 0;
     }
 
     header {
+      width: 100%;
       position: relative;
       padding: 20px 40px;
       display: flex;
@@ -60,156 +62,151 @@
       font-weight: 600;
       font-size: 1.1rem;
       line-height: 1.3;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+      color: #7D0A0A;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
-    /* Navbar */
     nav {
       display: flex;
       align-items: center;
       gap: 30px;
-      z-index: 2;
     }
 
     nav a {
-      color: white;
+      color: #7D0A0A;
       text-decoration: none;
       font-weight: 500;
       font-size: 1rem;
-      transition: color 0.3s ease;
       padding: 8px 0;
       border-bottom: 1px solid transparent;
       transition: 0.3s;
     }
 
     nav a:hover {
-      color: white;
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid #BF3131;
+      color: #BF3131;
     }
 
     nav a.active {
       font-weight: 600;
     }
 
-    /* Tombol Logout */
     .logout-btn {
       padding: 8px 24px;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      border: 2px solid white;
+      background: #BF3131;
+      color: #fff;
+      border: 2px solid #BF3131;
       border-radius: 6px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .logout-btn:hover {
-      background: white;
-      color: #990000;
+      background: #7D0A0A;
+      border-color: #7D0A0A;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
 
-    /* Judul Halaman */
     .page-title {
       text-align: center;
-      margin: 30px 0 20px 0;
+      margin: 40px 0 20px 0;
       font-size: 2rem;
       font-weight: 600;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-      position: relative;
+      color: #7D0A0A;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
       z-index: 2;
+      position: relative;
     }
 
-    /* Form Container */
     .form-container {
-      max-width: 700px;
-      background: rgba(255,255,255,0.15);
+      width: 90%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      margin: 0 auto 50px auto;
-      padding: 30px 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      position: relative;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+      color: #333;
       z-index: 2;
+      position: relative;
+      margin-bottom: 40px;
     }
 
     form label {
       display: block;
-      margin-bottom: 6px;
-      font-weight: 500;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #7D0A0A;
     }
 
-    form input[type="text"],
-    form textarea,
-    form input[type="file"] {
+    input[type="text"],
+    textarea,
+    input[type="file"] {
       width: 100%;
       padding: 10px 12px;
       margin-bottom: 15px;
-      border: none;
-      border-radius: 6px;
-      outline: none;
-      background: rgba(255,255,255,0.9);
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.8);
       color: #333;
+      outline: none;
       font-size: 1rem;
+      transition: 0.3s;
     }
 
-    form input[readonly] {
-      background: rgba(255,255,255,0.7);
-      color: #555;
-      cursor: not-allowed;
+    input:focus,
+    textarea:focus {
+      border-color: #BF3131;
+      background: rgba(255,255,255,1);
+    }
+
+    input[readonly] {
+      background: rgba(240,240,240,0.8);
+      color: #666;
     }
 
     textarea {
-      resize: vertical;
-      min-height: 100px;
+      resize: none;
+      height: 120px;
     }
 
     .btn {
       display: inline-block;
       width: 100%;
-      text-align: center;
-      padding: 12px 0;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #990000;
-      background-color: white;
+      background: #BF3131;
+      color: #fff;
       border: none;
       border-radius: 8px;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     .btn:hover {
-      background-color: #cc0000;
-      color: white;
+      background: #7D0A0A;
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
     }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
-      }
-
-      nav {
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
       .form-container {
         padding: 20px;
       }
-
       .page-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header dengan Navbar -->
   <header>
     <div class="brand">
       <img src="../img/logo-bandarlampung.png" alt="Logo Kota Bandar Lampung">
@@ -224,12 +221,8 @@
     </nav>
   </header>
 
-  <!-- Judul -->
-  <div class="page-title">
-    Tambah Pengaduan
-  </div>
+  <div class="page-title">Tambah Pengaduan</div>
 
-  <!-- Form Tambah Pengaduan -->
   <div class="form-container">
     <form action="#" method="post" enctype="multipart/form-data">
       <label for="tgl">Tanggal Pengaduan</label>
